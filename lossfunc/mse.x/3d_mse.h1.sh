@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Name bs 1.4 means 2D batch size 1 per gpu and 3D batch size 4 per gpu
-
 TZ="America/Chicago"
 export PATH=/usr/sbin:$PATH
 echo 'Date: ' `date`
