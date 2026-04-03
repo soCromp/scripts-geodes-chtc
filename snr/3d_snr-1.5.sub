@@ -20,7 +20,7 @@ requirements = (CUDACapability >= 4) && (Target.HasCHTCStaging == True)
 request_gpus = 2
 require_gpus = (GlobalMemoryMB >= 48000)
 +WantGPULab = true
-+GPUJobLength = "medium"
++GPUJobLength = "long"
 request_cpus = 2
 request_memory = 100GB
 request_disk = 300GB

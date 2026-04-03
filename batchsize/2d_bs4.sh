@@ -29,4 +29,4 @@ echo "data extraction took $((end - start)) seconds"
 python train_2d.py --train --train --epochs 20 --dataset ./data/natlantic/train --checkpoint_dir . --name $RUNNAME \
     --lr 1e-5 --unet_block_out_channels 512,1024,2048 --save_image_epochs 100000 --save_model_epochs 100000 --train_batch_size 4 \
     --val_dataset ./data/satlantic/train --validation_epochs 4
-tar -czvf /staging/groups/geodes/$RUNNAME_$PROCESS.tar.gz ./$RUNNAME
+tar -czvf /staging/groups/cs_geodes/$RUNNAME_$PROCESS.tar.gz ./$RUNNAME
