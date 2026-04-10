@@ -15,9 +15,10 @@ Dataset=$4
 Channelfile=$5
 Split=$6
 ModelName=$7
+Eta=$8
 
-StartSample=$(((PROCESS * 34) + 832))
-EndSample=$((((PROCESS + 1) * 34) + 832))
+StartSample=$((PROCESS * 64))
+EndSample=$(((PROCESS + 1) * 64))
 if [ "$EndSample" -gt 900 ]; then
     EndSample=900
 fi
@@ -48,6 +49,7 @@ ls
 
 # run scripts
 python -c "import torch; print('CUDA:', torch.cuda.is_available())"
-python train_3d.py --dataset ./data/natlantic/$Split --checkpoint_dir . --name $ModelName --eval_batch_size 32 --start_idx $StartSample --end_idx $EndSample
+python train_3d.py --dataset ./data/natlantic/$Split --checkpoint_dir . --name $ModelName --eval_batch_size 32 \
+    --start_idx $StartSample --end_idx $EndSample --eta $Eta
 ls
 tar -czvf /staging/cromp/$RUNNAME\_$CLUSTER\_$PROCESS.tar.gz ./$ModelName/samples

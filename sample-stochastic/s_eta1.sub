@@ -5,11 +5,12 @@ Dataset = /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz
 Channelfile = /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt
 Split = test
 VideoModel = 3d_l1.h25_6008482
+Eta=1.0
 
-RUNNAME = $(VideoModel)_sample_natlantic_$(Split)
+RUNNAME = $(VideoModel)_sample_eta1.0_natlantic_$(Split)
 
-executable = s_l1.h25.sh
-arguments = $(RUNNAME) $(Cluster) $(Process) $(Dataset) $(Channelfile) $(Split) $(VideoModel)
+executable = s_eta.sh
+arguments = $(RUNNAME) $(Cluster) $(Process) $(Dataset) $(Channelfile) $(Split) $(VideoModel) $(Eta)
 output = logs/$(RUNNAME)_$(Cluster)_$(Process).out
 log = logs/$(RUNNAME)_$(Cluster)_$(Process).log
 error = logs/$(RUNNAME)_$(Cluster)_$(Process).err
@@ -28,4 +29,4 @@ request_cpus = 1
 request_memory = 100GB
 request_disk = 300GB
 
-queue 2
+queue 15
