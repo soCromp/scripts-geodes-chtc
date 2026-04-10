@@ -16,8 +16,8 @@ Channelfile=$5
 Split=$6
 ModelName=$7
 
-StartSample=$(((PROCESS * 34) + 832))
-EndSample=$((((PROCESS + 1) * 34) + 832))
+StartSample=$((PROCESS * 64))
+EndSample=$(((PROCESS + 1) * 64))
 if [ "$EndSample" -gt 900 ]; then
     EndSample=900
 fi
