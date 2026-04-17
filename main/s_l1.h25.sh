@@ -50,4 +50,4 @@ ls
 python -c "import torch; print('CUDA:', torch.cuda.is_available())"
 python train_3d.py --dataset ./data/natlantic/$Split --checkpoint_dir . --name $ModelName --eval_batch_size 32 --start_idx $StartSample --end_idx $EndSample
 ls
-tar -czvf /staging/cromp/$RUNNAME\_$CLUSTER\_$PROCESS.tar.gz ./$ModelName/samples
+tar -czvf /staging/groups/cs_geodes/$RUNNAME\_$CLUSTER\_$PROCESS.tar.gz ./$ModelName/samples
