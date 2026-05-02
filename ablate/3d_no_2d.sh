@@ -1,4 +1,5 @@
 #!/bin/bash
+
 TZ="America/Chicago"
 export PATH=/usr/sbin:$PATH
 echo 'Date: ' `date`
@@ -8,7 +9,12 @@ nvidia-smi
 
 # arguments passed from sub file
 RUNNAME=$1
-PROCESS=$2 
+PROCESS=$2
+LR=$3
+Epochs=$4
+
+export CC=$(which gcc)
+export CXX=$(which g++)
 
 echo "expanding source code...  $(date)"
 tar -xvzf geodes.tar.gz
@@ -20,13 +26,16 @@ tar -xzf /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz -C ./d
 tar -xzf /staging/groups/cs_geodes/cyclone/multivar/date/satlantic.tar.gz -C ./data
 cp /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt ./data/natlantic/channels.txt
 cp /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt ./data/satlantic/channels.txt
-
 end=$(date +%s)
-
 echo "data extraction took $((end - start)) seconds"
 
+
 # run scripts
-python train_2d.py --train --train --epochs 20 --dataset ./data/natlantic/train --checkpoint_dir . --name $RUNNAME \
-    --lr 1e-5 --unet_block_out_channels 512,1024,2048 --save_image_epochs 100000 --save_model_epochs 100000 --train_batch_size 1 \
-    --val_dataset ./data/satlantic/train --validation_epochs 10 --loss_fn l1 
-tar -czvf /staging/groups/cs_geodes/$RUNNAME\_$PROCESS.tar.gz ./$RUNNAME
+python3 -c "import torch; print('CUDA:', torch.cuda.is_available())"
+accelerate test --config_file accelerate_config.yaml
+ACCELERATE_CONFIG_FILE=accelerate_config.yaml accelerate launch --num_processes 2 train_3d.py --train \
+    --epochs $4 --dataset ./data/natlantic/train --checkpoint_dir . --name ${RUNNAME}_${PROCESS} --lr $3 --train_batch_size 1 \
+    --save_image_epochs 100000 --save_model_epochs 100000 \
+    --val_dataset ./data/satlantic/train --validation_epochs 10 --loss_fn huber --huber_delta 0.25 
+ls
+tar -czvf /staging/groups/cs_geodes/${RUNNAME}_${PROCESS}.tar.gz ./${RUNNAME}_${PROCESS}
