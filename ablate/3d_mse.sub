@@ -2,11 +2,13 @@ container_image = docker://sncromp/geodes:3
 universe = container
 
 LR = 1e-5
-Epochs = 40
+Epochs = 20
+ImageTag = ablate_2d_normlinear
+ImageModel = /staging/groups/cs_geodes/ablate_2d_normlinear_6264731.tar.gz
 
-RUNNAME = ablate_3d_no_2d
-executable = 3d_no_2d.sh
-arguments = $(RUNNAME) $(Cluster) $(LR) $(Epochs)
+RUNNAME = ablate_3d_normlinear
+executable = 3d_normlinear.sh
+arguments = $(RUNNAME) $(Cluster) $(LR) $(Epochs) $(ImageModel) $(ImageTag)
 
 output = logs/$(RUNNAME).$(Cluster).out
 log = logs/$(RUNNAME).$(Cluster).log
@@ -18,7 +20,7 @@ requirements = (CUDACapability >= 4) && (Target.HasCHTCStaging == True)
 request_gpus = 2
 require_gpus = (GlobalMemoryMB >= 48000)
 +WantGPULab = true
-+GPUJobLength = "long"
++GPUJobLength = "medium"
 request_cpus = 2
 request_memory = 100GB
 request_disk = 300GB
