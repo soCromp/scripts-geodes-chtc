@@ -3,11 +3,11 @@ universe = container
 
 LR = 1e-5
 Epochs = 20
-ImageTag = ablate_2d_mse
-ImageModel = /staging/groups/cs_geodes/ablate_2d_mse_6264732.tar.gz
+ImageTag = 2d_noclamp
+ImageModel = /staging/groups/cs_geodes/6067005.tar.gz
 
-RUNNAME = ablate_3d_mse
-executable = 3d_mse.sh
+RUNNAME = 3d_noclamp.noclamp
+executable = 3d_noclamp.noclamp.sh
 arguments = $(RUNNAME) $(Cluster) $(LR) $(Epochs) $(ImageModel) $(ImageTag)
 
 output = logs/$(RUNNAME).$(Cluster).out
