@@ -26,5 +26,5 @@ echo "data extraction took $((end - start)) seconds"
 # run scripts
 python train_2d.py --train --train --epochs 20 --dataset ./data/geodes-ext/train --checkpoint_dir . --name $RUNNAME \
     --lr 1e-5 --unet_block_out_channels 512,1024,2048 --save_image_epochs 100000 --save_model_epochs 100000 --train_batch_size 1 \
-    --val_dataset ./data/geodes-ext/val --validation_epochs 10 --no-val_flip --loss_fn l1 --image_size 64
-tar -czvf /staging/groups/cs_geodes/$RUNNAME\_$PROCESS.tar.gz ./$RUNNAME
+    --val_dataset ./data/geodes-ext/val --validation_epochs 10 --no-val_flip --snr_gamma 5 --image_size 64
+tar -czvf /staging/cromp/$RUNNAME\_$PROCESS.tar.gz ./$RUNNAME

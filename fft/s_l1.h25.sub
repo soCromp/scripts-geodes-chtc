@@ -4,11 +4,11 @@ universe = container
 Dataset = /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz
 Channelfile = /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt
 Split = test
-VideoModel = ablate_3d_mse_6293588
+VideoModel = fft_l1.h25_snr_run3_6094414_6335420_swaveraged
 
-RUNNAME = samples_$(VideoModel)
+RUNNAME = $(VideoModel)_sample_natlantic_$(Split)
 
-executable = s_ablate.sh
+executable = s_l1.h25.sh
 arguments = $(RUNNAME) $(Cluster) $(Process) $(Dataset) $(Channelfile) $(Split) $(VideoModel)
 output = logs/$(RUNNAME)_$(Cluster)_$(Process).out
 log = logs/$(RUNNAME)_$(Cluster)_$(Process).log

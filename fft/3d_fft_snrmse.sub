@@ -1,14 +1,13 @@
 container_image = docker://sncromp/geodes:3
 universe = container
 
-LR = 1e-5
-Epochs = 20
-ImageTag = ablate_2d_mse
-ImageModel = /staging/groups/cs_geodes/ablate_2d_mse_6264732.tar.gz
+LR = 5e-7
+Epochs = 25
+ModelName = 3d_snr-5.5_6008211
 
-RUNNAME = ablate_3d_mse
-executable = 3d_mse.sh
-arguments = $(RUNNAME) $(Cluster) $(LR) $(Epochs) $(ImageModel) $(ImageTag)
+RUNNAME = fft_mse.mse_snr_run1_6008211
+executable = 3d_fft_snrmse.sh
+arguments = $(RUNNAME) $(Cluster) $(LR) $(Epochs) $(ModelName)
 
 output = logs/$(RUNNAME).$(Cluster).out
 log = logs/$(RUNNAME).$(Cluster).log

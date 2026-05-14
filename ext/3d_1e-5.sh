@@ -41,6 +41,6 @@ accelerate test --config_file accelerate_config.yaml
 ACCELERATE_CONFIG_FILE=accelerate_config.yaml accelerate launch --num_processes 2 train_3d.py --train \
     --epochs $4 --dataset ./data/geodes-ext/train --checkpoint_dir . --name ${RUNNAME}_${PROCESS} --lr $3 --img_model $6 --train_batch_size 1 \
     --save_image_epochs 100000 --save_model_epochs 100000 --no-val_flip --image_size 64 \
-    --val_dataset ./data/geodes-ext/val --validation_epochs 10 --loss_fn huber --huber_delta 0.25 --channels 3
+    --val_dataset ./data/geodes-ext/val --validation_epochs 10 --snr_gamma 5 --channels 3
 ls
 tar -czvf /staging/groups/cs_geodes/${RUNNAME}_${PROCESS}.tar.gz ./${RUNNAME}_${PROCESS}

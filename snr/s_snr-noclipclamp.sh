@@ -48,6 +48,6 @@ ls
 
 # run scripts
 python -c "import torch; print('CUDA:', torch.cuda.is_available())"
-python train_3d.py --dataset ./data/natlantic/$Split --checkpoint_dir . --name $ModelName --eval_batch_size 32 --start_idx $StartSample --end_idx $EndSample  --eta 1.0 --no_sample_clip
+python train_3d.py --dataset ./data/natlantic/$Split --checkpoint_dir . --name $ModelName --eval_batch_size 32 --start_idx $StartSample --end_idx $EndSample  --eta 1.0 --no_sample_clip --no_stat_clamp
 ls
-tar -czvf /staging/groups/cs_geodes/$RUNNAME\_$CLUSTER\_$PROCESS.tar.gz ./$ModelName/samples
+tar -czvf /staging/cromp/$RUNNAME\_$CLUSTER\_$PROCESS.tar.gz ./$ModelName/samples

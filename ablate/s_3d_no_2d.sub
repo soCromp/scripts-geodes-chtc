@@ -4,7 +4,7 @@ universe = container
 Dataset = /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz
 Channelfile = /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt
 Split = test
-VideoModel = ablate_3d_no_2d_6292858
+#VideoModel = 
 
 RUNNAME = samples_$(VideoModel)
 

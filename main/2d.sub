@@ -1,9 +1,9 @@
 container_image = docker://sncromp/geodes:3
 universe = container 
 
-RUNNAME=main_2d_l1
+RUNNAME=main_2d
 
-executable = 2d_l1.sh 
+executable = 2d.sh 
 arguments =  $(RUNNAME) $(Cluster)
 output = logs/$(RUNNAME)_$(Cluster).out
 log = logs/$(RUNNAME)_$(Cluster).log
