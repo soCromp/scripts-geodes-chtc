@@ -1,14 +1,14 @@
 container_image = docker://sncromp/geodes:3
 universe = container 
 
-Dataset = /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz
-Channelfile = /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt
+Dataset = /staging/groups/cs_geodes/cyclone/windmag/date/natlantic.tar.gz
+Channelfile = /staging/groups/cs_geodes/cyclone/windmag/date/channels.txt
 Split = test
-VideoModel = main_3d_2_6365037
+#VideoModel = main_3d_l1.h25_run3_6280745
 
-RUNNAME = $(VideoModel)_stochsample2_natlantic_$(Split)
+RUNNAME = $(VideoModel)_stochsample_wmnatlantic_$(Split)
 
-executable = s_stoch.sh
+executable = s_wm_stoch.sh
 arguments = $(RUNNAME) $(Cluster) $(Process) $(Dataset) $(Channelfile) $(Split) $(VideoModel)
 output = logs/$(RUNNAME)_$(Cluster)_$(Process).out
 log = logs/$(RUNNAME)_$(Cluster)_$(Process).log

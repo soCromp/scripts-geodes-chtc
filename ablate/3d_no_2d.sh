@@ -38,4 +38,4 @@ ACCELERATE_CONFIG_FILE=accelerate_config.yaml accelerate launch --num_processes 
     --save_image_epochs 100000 --save_model_epochs 100000 --channels 5 \
     --val_dataset ./data/satlantic/train --validation_epochs 10 --snr_gamma 5
 ls
-tar -czvf /staging/cromp/${RUNNAME}_${PROCESS}.tar.gz ./${RUNNAME}_${PROCESS}
+tar -czvf /staging/groups/cs_geodes/${RUNNAME}_${PROCESS}.tar.gz ./${RUNNAME}_${PROCESS}

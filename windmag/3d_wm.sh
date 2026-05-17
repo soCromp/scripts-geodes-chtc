@@ -24,10 +24,10 @@ cd geodes
 
 start=$(date +%s)
 mkdir data
-tar -xzf /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz -C ./data
-tar -xzf /staging/groups/cs_geodes/cyclone/multivar/date/satlantic.tar.gz -C ./data
-cp /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt ./data/natlantic/channels.txt
-cp /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt ./data/satlantic/channels.txt
+tar -xzf /staging/groups/cs_geodes/cyclone/windmag/date/natlantic.tar.gz -C ./data
+tar -xzf /staging/groups/cs_geodes/cyclone/windmag/date/satlantic.tar.gz -C ./data
+cp /staging/groups/cs_geodes/cyclone/windmag/date/channels.txt ./data/natlantic/channels.txt
+cp /staging/groups/cs_geodes/cyclone/windmag/date/channels.txt ./data/satlantic/channels.txt
 end=$(date +%s)
 echo "data extraction took $((end - start)) seconds"
 echo "expanding image model $5... $(date)"

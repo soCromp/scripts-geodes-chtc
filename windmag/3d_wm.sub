@@ -3,11 +3,11 @@ universe = container
 
 LR = 1e-5
 Epochs = 20
-ImageTag = ablate_2d_normlinear
-ImageModel = /staging/groups/cs_geodes/ablate_2d_normlinear_6354555.tar.gz
+#ImageTag = 2d_snr5_2
+#ImageModel = /staging/cromp/6351465.tar.gz
 
-RUNNAME = ablate_3d_normlinear
-executable = 3d_normlinear.sh
+RUNNAME = wm_3d
+executable = 3d_wm.sh
 arguments = $(RUNNAME) $(Cluster) $(LR) $(Epochs) $(ImageModel) $(ImageTag)
 
 output = logs/$(RUNNAME).$(Cluster).out

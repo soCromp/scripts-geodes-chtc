@@ -4,11 +4,11 @@ universe = container
 Dataset = /staging/groups/cs_geodes/cyclone/multivar/date/natlantic.tar.gz
 Channelfile = /staging/groups/cs_geodes/cyclone/multivar/date/channels.txt
 Split = test
-VideoModel = main_3d_2_6365037
+VideoModel = 3d_snr-5.5_6008211
 
-RUNNAME = $(VideoModel)_stochsample2_natlantic_$(Split)
+RUNNAME = $(VideoModel)_sampleclipnoclamp_natlantic_$(Split)
 
-executable = s_stoch.sh
+executable = s_snr-clipnoclamp.sh
 arguments = $(RUNNAME) $(Cluster) $(Process) $(Dataset) $(Channelfile) $(Split) $(VideoModel)
 output = logs/$(RUNNAME)_$(Cluster)_$(Process).out
 log = logs/$(RUNNAME)_$(Cluster)_$(Process).log
@@ -17,7 +17,7 @@ error = logs/$(RUNNAME)_$(Cluster)_$(Process).err
 should_transfer_files = YES
 transfer_input_files = /home/cromp/geodes-project/geodes.tar.gz
 
-requirements = (CUDACapability >= 4) && (Target.HasCHTCStaging == True)
+requirements = (CUDACapability >= 4) && (Target.HasCHTCStaging == True) && (Machine != "gpu4001.chtc.wisc.edu")
 request_gpus = 1
 require_gpus = (GlobalMemoryMB >= 32000)
 

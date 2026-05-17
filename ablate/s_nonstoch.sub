@@ -8,7 +8,7 @@ VideoModel = 3d_snr-5.5_6008211
 
 RUNNAME = samples_$(VideoModel)
 
-executable = s_ablate.sh
+executable = s_nonstoch.sh
 arguments = $(RUNNAME) $(Cluster) $(Process) $(Dataset) $(Channelfile) $(Split) $(VideoModel)
 output = logs/$(RUNNAME)_$(Cluster)_$(Process).out
 log = logs/$(RUNNAME)_$(Cluster)_$(Process).log
